@@ -4,7 +4,7 @@ import { profile, navItems } from '../data/resume';
 export default function Footer() {
   return (
     <footer className="relative border-t border-gold/10 px-6 py-12">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-8 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-[2200px] flex-col items-center gap-8 sm:flex-row sm:justify-between">
         <div className="flex items-center gap-3">
           <span className="grid h-10 w-10 place-items-center rounded-xl bg-gild font-display text-sm font-bold text-obsidian-950">
             RK
@@ -36,7 +36,7 @@ export default function Footer() {
         </a>
       </div>
 
-      <div className="mx-auto mt-8 max-w-6xl border-t border-gold/10 pt-6 text-center text-xs text-parchment-faint">
+      <div className="mx-auto mt-8 max-w-[2200px] border-t border-gold/10 pt-6 text-center text-xs text-parchment-faint">
         © {new Date().getFullYear()} {profile.name}. Forged with React, Three.js, Tailwind CSS &amp; Framer Motion.
       </div>
     </footer>

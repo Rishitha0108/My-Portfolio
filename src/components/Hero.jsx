@@ -34,9 +34,9 @@ export default function Hero() {
     <section id="hero" ref={ref} className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-16">
       <Embers />
 
-      {/* the 3D relic, floating behind the name */}
-      <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
-        <Relic3D className="h-[74vmin] w-[74vmin] max-h-[640px] max-w-[640px] opacity-80" />
+      {/* the 3D relic — full-bleed canvas so the crystal & its glow never clip a box edge */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <Relic3D className="h-full w-full opacity-90" />
       </div>
 
       {/* radial scrim so the name commands the hierarchy over the glowing relic */}
@@ -69,7 +69,7 @@ export default function Hero() {
           </motion.div>
         ))}
 
-      <motion.div style={reduced ? {} : { y, opacity }} className="relative z-20 mx-auto w-full max-w-5xl px-6 text-center">
+      <motion.div style={reduced ? {} : { y, opacity }} className="relative z-20 mx-auto w-full max-w-[2200px] px-6 text-center">
         <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col items-center">
           <motion.div variants={item}>
             <span className="rune-card inline-flex items-center gap-2.5 rounded-full px-4 py-1.5 text-sm text-parchment-dim">

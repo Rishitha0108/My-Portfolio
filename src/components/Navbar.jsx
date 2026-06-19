@@ -50,7 +50,7 @@ export default function Navbar() {
         className="fixed inset-x-0 top-3 z-[70] px-4"
       >
         <nav
-          className={`mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6 ${
+          className={`mx-auto flex max-w-[2200px] items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6 ${
             scrolled ? 'rune-card gild-border shadow-relic' : 'border border-transparent bg-transparent'
           }`}
         >
@@ -115,7 +115,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.25 }}
-              className="rune-card mx-auto mt-2 max-w-6xl overflow-hidden rounded-2xl p-2 md:hidden"
+              className="rune-card mx-auto mt-2 max-w-[2200px] overflow-hidden rounded-2xl p-2 md:hidden"
             >
               <ul className="flex flex-col">
                 {navItems.map((item) => (

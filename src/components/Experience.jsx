@@ -92,7 +92,7 @@ export default function Experience() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="experience" className="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-32">
+    <section id="experience" className="relative mx-auto max-w-[2200px] scroll-mt-24 px-6 py-24 sm:py-32">
       <SectionHeading
         eyebrow="Chronicle"
         title="Five courts."

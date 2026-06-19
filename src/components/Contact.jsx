@@ -14,7 +14,7 @@ const channels = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-32">
+    <section id="contact" className="relative mx-auto max-w-[2200px] scroll-mt-24 px-6 py-24 sm:py-32">
       <Reveal>
         <div className="rune-card gild-border relative overflow-hidden rounded-[2rem] p-8 sm:p-14">
           {/* summoning circle */}

@@ -18,7 +18,7 @@ const incantation = [
 export default function Skills() {
   return (
     <section id="skills" className="relative scroll-mt-24 py-24 sm:py-32">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-[2200px] px-6">
         <SectionHeading
           eyebrow="Disciplines"
           title="Six schools of"

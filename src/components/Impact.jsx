@@ -10,7 +10,7 @@ export default function Impact() {
       {/* full-bleed arcane glow band */}
       <div className="pointer-events-none absolute inset-x-0 top-1/2 -z-0 h-[60%] -translate-y-1/2 bg-magic-radial opacity-60 blur-3xl" />
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-[2200px] px-6">
         <SectionHeading
           eyebrow="Feats"
           title="The feats that"

@@ -78,7 +78,7 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="relative mx-auto max-w-6xl scroll-mt-24 px-6 py-24 sm:py-32">
+    <section id="projects" className="relative mx-auto max-w-[2200px] scroll-mt-24 px-6 py-24 sm:py-32">
       <SectionHeading
         eyebrow="Artifacts"
         title="Artifacts forged in"
