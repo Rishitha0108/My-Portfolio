@@ -37,7 +37,7 @@ function Relic({ pointer }) {
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} scale={0.72}>
       <Float speed={1.4} rotationIntensity={0.4} floatIntensity={0.9}>
         {/* faceted crystal */}
         <mesh ref={crystal}>
