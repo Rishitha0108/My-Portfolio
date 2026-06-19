@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  background-color: #08060f;
+}
+
+body {
+  @apply font-body text-parchment antialiased;
+  overflow-x: hidden;
+  font-size: 1.0625rem; /* serif body reads better a touch larger */
+  line-height: 1.7;
+}
+
+/* Custom magic cursor: hide the native one on capable pointers (re-enabled
+   for touch / reduced-motion via JS by toggling .no-magic on <html>) */
+@media (hover: hover) and (pointer: fine) {
+  html:not(.no-magic),
+  html:not(.no-magic) * {
+    cursor: none;
+  }
+}
+
+::selection {
+  background: rgba(217, 178, 95, 0.3);
+  color: #fff7e6;
+}
+
+/* Gilded scrollbar */
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #08060f;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #b3893d, #d9b25f, #6f3fd1);
+  border-radius: 999px;
+  border: 3px solid #08060f;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f3d99a, #a06bff);
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer components {
+  /* ── Surfaces ─────────────────────────────────────────────── */
+  /* Dark "vellum" glass card with warm tint */
+  .rune-card {
+    @apply relative border border-gold/20 bg-obsidian-900/60 backdrop-blur-xl;
+    box-shadow: var(--tw-shadow, 0 24px 60px -24px rgba(0, 0, 0, 0.85)),
+      inset 0 1px 0 0 rgba(243, 217, 154, 0.08);
+  }
+  .rune-card:hover {
+    @apply border-gold/40;
+  }
+
+  /* Ornamental gold corner brackets — applied to .ornament */
+  .ornament::before,
+  .ornament::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+  .ornament::before {
+    top: 10px;
+    left: 10px;
+    border-top: 1px solid rgba(217, 178, 95, 0.7);
+    border-left: 1px solid rgba(217, 178, 95, 0.7);
+  }
+  .ornament::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 1px solid rgba(217, 178, 95, 0.7);
+    border-right: 1px solid rgba(217, 178, 95, 0.7);
+  }
+
+  /* ── Type treatments ─────────────────────────────────────── */
+  .text-gilded {
+    @apply bg-gild bg-clip-text text-transparent;
+    background-size: 200% auto;
+  }
+  .text-arcane-grad {
+    @apply bg-arcane-grad bg-clip-text text-transparent;
+  }
+
+  /* Eyebrow = manuscript marginalia */
+  .rubric {
+    @apply inline-flex items-center gap-3 font-display text-xs font-semibold uppercase tracking-[0.42em] text-gold/85;
+  }
+
+  /* Illuminated drop-cap */
+  .dropcap::first-letter {
+    @apply font-display text-gold;
+    float: left;
+    font-size: 3.6rem;
+    line-height: 0.8;
+    padding: 0.2rem 0.6rem 0 0;
+    text-shadow: 0 0 22px rgba(217, 178, 95, 0.4);
+  }
+
+  /* Hairline divider with a center diamond */
+  .rule-diamond {
+    @apply relative h-px w-full bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+  }
+  .rule-diamond::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    translate: -50% -50%;
+    rotate: 45deg;
+    background: #d9b25f;
+    box-shadow: 0 0 12px rgba(217, 178, 95, 0.7);
+  }
+
+  /* Gilded animated border (mask trick) */
+  .gild-border {
+    position: relative;
+    background-clip: padding-box;
+  }
+  .gild-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(217, 178, 95, 0.8), rgba(160, 107, 255, 0.3), rgba(243, 217, 154, 0.7));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Film grain overlay (SVG noise as data-uri) */
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Respect reduced motion globally */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
